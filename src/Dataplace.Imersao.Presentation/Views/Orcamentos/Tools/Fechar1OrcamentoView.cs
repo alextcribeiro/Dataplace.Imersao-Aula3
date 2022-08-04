@@ -75,9 +75,7 @@ namespace Dataplace.Imersao.Presentation.Views
         #region tool events
         private void FechamentoOrcamentoView_ToolConfiguration(object sender, ToolConfigurationEventArgs e)
         {
-            // definições iniciais do projeto
-            // item seguraça
-            // engine code
+           
             this.Text = "Fechar orçamentos em aberto";
             e.SecurityIdList.Add(_itemSeg);
             e.CancelButtonVisisble = true;
@@ -281,9 +279,6 @@ namespace Dataplace.Imersao.Presentation.Views
 
         #endregion
 
-        //private void CancelarOrcamentoView1_Load(object sender, EventArgs e)
-        //{
-
-        //}
+       
     }
 }
