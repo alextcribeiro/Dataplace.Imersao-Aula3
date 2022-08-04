@@ -1,6 +1,6 @@
 ﻿namespace Dataplace.Imersao.Presentation.Views
 {
-    partial class CancelarOrcamentoView
+    partial class Fechar1OrcamementoView
     {
         /// <summary> 
         /// Required designer variable.
@@ -48,8 +48,8 @@
             // 
             // gridOrcamento
             // 
-            this.gridOrcamento.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.gridOrcamento.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridOrcamento.GroupByCaption = "Drag a column header here to group by that column";
             this.gridOrcamento.Images.Add(((System.Drawing.Image)(resources.GetObject("gridOrcamento.Images"))));
@@ -190,7 +190,7 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Situação";
             // 
-            // CancelarOrcamentoView
+            // FecharOrcamentoView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -202,7 +202,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CancelarOrcamentoView";
             this.Size = new System.Drawing.Size(1010, 609);
-            this.Load += new System.EventHandler(this.CancelarOrcamentoView_Load);
+            //this.Load += new System.EventHandler(this.Fechar1OrcamentoView_Load);
             this.Controls.SetChildIndex(this.gridOrcamento, 0);
             this.Controls.SetChildIndex(this.btnCarregar, 0);
             this.Controls.SetChildIndex(this.toolStrip1, 0);

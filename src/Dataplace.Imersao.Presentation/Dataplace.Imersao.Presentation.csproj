@@ -79,6 +79,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Orcamentos\Tools\Fechar1OrcamentoView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Orcamentos\Tools\Fechar1OrcamentoView.Designer.cs">
+      <DependentUpon>Fechar1OrcamentoView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Orcamentos\Tools\CancelarOrcamentoView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -98,6 +104,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Views\Orcamentos\Tools\Fechar1OrcamentoView.resx">
+      <DependentUpon>Fechar1OrcamentoView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Orcamentos\Tools\CancelarOrcamentoView.resx">
       <DependentUpon>CancelarOrcamentoView.cs</DependentUpon>
     </EmbeddedResource>

@@ -24,7 +24,7 @@ using System.Windows.Forms;
 
 namespace Dataplace.Imersao.Presentation.Views
 {
-    public partial class CancelarOrcamentoView : dpLibrary05.Infrastructure.UserControls.ucSymGen_ToolDialog
+    public partial class Fechar1OrcamementoView : dpLibrary05.Infrastructure.UserControls.ucSymGen_ToolDialog
     {
         #region fields
         private DateTime _startDate;
@@ -34,24 +34,24 @@ namespace Dataplace.Imersao.Presentation.Views
         #endregion
 
         #region constructors
-        public CancelarOrcamentoView()
+        public Fechar1OrcamementoView()
         {
             InitializeComponent();
 
             _orcamentoList = new C1TrueDBGridListBehavior<OrcamentoViewModel, OrcamentoQuery>(gridOrcamento)
                 .WithConfiguration(GetConfiguration());
 
-            this.ToolConfiguration += CancelamentoOrcamentoView_ToolConfiguration;
-            this.BeforeProcess += CancelamentoOrcamentoView_BeforeProcess;
-            this.Process += CancelamentoOrcamentoView_Process;
-            this.AfterProcess += CancelamentoOrcamentoView_AfterProcess;
+            this.ToolConfiguration += FechamentoOrcamentoView_ToolConfiguration;
+            this.BeforeProcess += FechamentoOrcamentoView_BeforeProcess;
+            this.Process += FechamentoOrcamentoView_Process;
+            this.AfterProcess += FechamentoOrcamentoView_AfterProcess;
 
 
             this.tsiMarcar.Click += TsiMarcar_Click;
             this.tsiDesmarca.Click += TsiDesmarca_Click;
             this.tsiExcel.Click += TsiExcel_Click;
 
-            this.KeyDown += CancelamentoOrcamentoView_KeyDown;
+            //this.KeyDown += CancelamentoOrcamentoView_KeyDown;
 
 
             this.chkAberto.Click += chk_Click;
@@ -73,17 +73,17 @@ namespace Dataplace.Imersao.Presentation.Views
         #endregion
 
         #region tool events
-        private void CancelamentoOrcamentoView_ToolConfiguration(object sender, ToolConfigurationEventArgs e)
+        private void FechamentoOrcamentoView_ToolConfiguration(object sender, ToolConfigurationEventArgs e)
         {
             // definições iniciais do projeto
             // item seguraça
             // engine code
-            this.Text = "Cancelar orçamentos em aberto";
+            this.Text = "Fechar orçamentos em aberto";
             e.SecurityIdList.Add(_itemSeg);
             e.CancelButtonVisisble = true;
         }
 
-        private void CancelamentoOrcamentoView_BeforeProcess(object sender, BeforeProcessEventArgs e)
+        private void FechamentoOrcamentoView_BeforeProcess(object sender, BeforeProcessEventArgs e)
         {
 
             var permission = PermissionControl.Factory().ValidatePermission(_itemSeg, dpLibrary05.mGenerico.PermissionEnum.Execute);
@@ -105,7 +105,7 @@ namespace Dataplace.Imersao.Presentation.Views
             e.Parameter.Items.Add("itensSelecionados", itensSelecionados);
         }
 
-        private async void CancelamentoOrcamentoView_Process(object sender, ProcessEventArgs e)
+        private async void FechamentoOrcamentoView_Process(object sender, ProcessEventArgs e)
         {
            
             if (!(e.Parameter.Items.get_Item("itensSelecionados").Value is IEnumerable<OrcamentoViewModel> itensSelecionados))
@@ -122,7 +122,7 @@ namespace Dataplace.Imersao.Presentation.Views
             {
                 using ( var scope = dpLibrary05.Infrastructure.ServiceLocator.ServiceLocatorScoped.Factory())
                 {
-                    var command = new CancelarOrcamentoCommand(item);
+                    var command = new FecharOrcamentoCommand(item);
                     
                     var mediator = scope.Container.GetInstance<IMediatorHandler>();
                     var notifications = scope.Container.GetInstance<INotificationHandler<DomainNotification>>();
@@ -132,10 +132,10 @@ namespace Dataplace.Imersao.Presentation.Views
                     if (item.Result.Success)
                     {
                         item.IsSelected = false;
-                        item.Situacao = Core.Domain.Orcamentos.Enums.OrcamentoStatusEnum.Cancelado.ToDataValue();
+                        item.Situacao = Core.Domain.Orcamentos.Enums.OrcamentoStatusEnum.Fechado.ToDataValue();
                     }
                 }
-                e.LogBuilder.Items.Add($"Orçamento {item.NumOrcamento} cancelado", dpLibrary05.Infrastructure.Helpers.LogBuilder.LogTypeEnum.Information);
+                e.LogBuilder.Items.Add($"Orçamento {item.NumOrcamento} fechado", dpLibrary05.Infrastructure.Helpers.LogBuilder.LogTypeEnum.Information);
 
                 System.Threading.Thread.Sleep(1000);
 
@@ -149,7 +149,7 @@ namespace Dataplace.Imersao.Presentation.Views
             e.EndProcess();
         }
 
-        private void CancelamentoOrcamentoView_AfterProcess(object sender, AfterProcessEventArgs e)
+        private void FechamentoOrcamentoView_AfterProcess(object sender, AfterProcessEventArgs e)
         {
          
         }
@@ -255,7 +255,7 @@ namespace Dataplace.Imersao.Presentation.Views
             _orcamentoList.ChangeCheckState(true);
         }
 
-        private async void CancelamentoOrcamentoView_KeyDown(object sender, KeyEventArgs e)
+        private async void FechamentoOrcamentoView_KeyDown(object sender, KeyEventArgs e)
         {
             if ( e.KeyCode == Keys.F5)
             {
@@ -281,9 +281,9 @@ namespace Dataplace.Imersao.Presentation.Views
 
         #endregion
 
-        private void CancelarOrcamentoView_Load(object sender, EventArgs e)
-        {
+        //private void CancelarOrcamentoView1_Load(object sender, EventArgs e)
+        //{
 
-        }
+        //}
     }
 }
